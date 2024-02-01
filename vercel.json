@@ -5,7 +5,7 @@
         "src": "mongoose.js",
         "use": "@vercel/node"
       },{
-        "src":"build/",
+        "src":"build/**",
         "use":"@vercel/static"
       }
     ],
@@ -13,12 +13,15 @@
       {
         "src": "/api/c1",
         "dest": "mongoose.js"
-      },      {
+      }, {
         "src": "/api/c1/(.*)",
         "dest": "mongoose.js"
-      },      {
-        "src": "/(.*)",
-        "dest": "build/"
+      }, {
+        "src": "/",
+        "dest": "build/index.html"
+      },{
+        "src": "/(.+)",
+        "dest": "build/$1"
       }
     ]
   }

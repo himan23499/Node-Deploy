@@ -6,15 +6,17 @@ const { Schema } = mongoose;
 // const resul1t=fs.readFileSync('index.html','utf-8');
 // const result=JSON.parse(fs.readFileSync('data.json','utf-8'));
 // const recipe = result.recipes;
+const cors = require('cors')
 const express = require('express');
 const server = express();
 const productRouter = require('./routes/product')
-const cors = require('cors')
+
 const cartRouter = require('./routes/user')
 const taskRouters = require('./routes/task');
 const path = require('path');
 // Base Url/API Root  example-google.com/api/v1/
-server.use(cors()) 
+server.use(cors());
+server.use(express.urlencoded());
 server.use(express.json());
 server.use(express.static(path.resolve(__dirname,process.env.PUBLIC_DIR)));
 server.use('/',productRouter.Router)
@@ -37,7 +39,7 @@ async function main(){
 server.use(express.json());
 // server.use(express.static('public'));//this will load index.html file only directly from middleware and will not goto server for parsing and will also overide get req below.
 server.use(express.static(process.env.PUBLIC_DIR));//this will load index.html file only directly from middleware and will not goto server for parsing and will also overide get req below.
-server.use(express.urlencoded());
+
 
 //custome middleware
 // server.use((req,res,next)=>{
