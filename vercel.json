@@ -4,12 +4,21 @@
       {
         "src": "mongoose.js",
         "use": "@vercel/node"
+      },{
+        "src":"build/",
+        "use":"@vercel/static"
       }
     ],
     "routes": [
       {
-        "src": "/(.*)",
+        "src": "/api/c1",
         "dest": "mongoose.js"
+      },      {
+        "src": "/api/c1/(.*)",
+        "dest": "mongoose.js"
+      },      {
+        "src": "/(.*)",
+        "dest": "build/"
       }
     ]
   }

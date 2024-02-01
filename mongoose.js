@@ -14,7 +14,7 @@ const cartRouter = require('./routes/user')
 const taskRouters = require('./routes/task');
 const path = require('path');
 // Base Url/API Root  example-google.com/api/v1/
-server.use(cors())
+server.use(cors()) 
 server.use(express.json());
 server.use(express.static(path.resolve(__dirname,process.env.PUBLIC_DIR)));
 server.use('/',productRouter.Router)
